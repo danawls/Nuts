@@ -1,6 +1,7 @@
-// models/research.js
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("./index").sequelize;
+
+console.log("Sequelize instance in Research model:", sequelize); // 디버깅 로그 추가
 
 class Research extends Model {}
 
@@ -20,7 +21,7 @@ Research.init(
     },
   },
   {
-    sequelize,
+    sequelize: sequelize, // Sequelize 인스턴스를 전달
     modelName: "Research",
   }
 );

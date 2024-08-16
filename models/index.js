@@ -5,7 +5,7 @@ const path = require("path");
 const Sequelize = require("sequelize");
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || "development";
-const config = require(__dirname + "/../config/config.js")[env]; // config.json 대신 config.js를 참조
+const config = require(__dirname + "/../config/config.js")[env];
 const db = {};
 
 let sequelize;
@@ -19,6 +19,8 @@ if (config.use_env_variable) {
     config
   );
 }
+
+console.log("Sequelize instance created:", sequelize); // 디버깅 로그 추가
 
 fs.readdirSync(__dirname)
   .filter((file) => {
