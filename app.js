@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
 });
 
 // 서버 시작
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5432;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
@@ -80,3 +80,14 @@ app.use("/api/user", userRoutes);
 const researchRoutes = require("./routes/research");
 
 app.use("/api/research", researchRoutes);
+
+const db = require("./models");
+
+db.sequelize
+  .authenticate()
+  .then(() => {
+    console.log("Database connected...");
+  })
+  .catch((err) => {
+    console.log("Error: " + err);
+  });
